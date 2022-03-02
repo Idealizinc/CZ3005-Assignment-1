@@ -9,6 +9,9 @@ Finding a Shortest Path with An Energy Budget
 # Import of necessary dependencies
 import json # To process json data from given files
 
+# Import of search algorithms
+from UniformCostSearch import UniformCostSearch
+
 # Constants
 JSON_PATH = "../json/"
 FILE_G = "G.json"
@@ -23,7 +26,7 @@ Dist = None  # Edge distance dictionary
 Coord = None # Node coordination dictionary
 
 # Settings
-DEBUG_MODE_ON = True    # Enable or disable debug mode
+DEBUG_MODE_ON = False    # Enable or disable debug mode
 DEBUG_ITERATION_MAX = 10 # Number of debug iterations to test for
 
 # Main runtime
@@ -34,7 +37,24 @@ def main():
     Dist = jsonLoadFromFile(JSON_PATH + FILE_DIST)
     Coord = jsonLoadFromFile(JSON_PATH + FILE_COORD)
 
+    # Set up starting and ending nodes with energy Budget
+    Start = "1"
+    End = "50"
+    EnergyBudget = 287932
+
+    # Test Case
+    if DEBUG_MODE_ON:
+        G = {"4": ["1", "2", "3"], "1": ["5"], "2": ["5"], "3": ["5"], "5": []}
+        Dist = {"4,1": 4, "1,5": 8, "4,2": 2, "2,5": 8, "4,3": 4, "3,5": 12}
+        Cost = {'4,1' : 7, '1,5' : 3, '4,2' : 6, '2,5': 6, '4,3' : 3, '3,5' : 2}
+        Start = "4"
+        End = "5"
+        EnergyBudget = 11
+
     # Perform Search Methods Here
+
+    # Task 2
+    UniformCostSearch().performSearch(Start, End, EnergyBudget, G, Cost, Dist).printResults()
 
     return
 
