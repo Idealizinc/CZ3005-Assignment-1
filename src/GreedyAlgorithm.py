@@ -14,7 +14,7 @@ def Dijkstra(g, dist, startVertexStr, endVertexStr):
     endVertex = int(endVertexStr)
 
     numV = len(g) #total number of Vertex
-    shortestD = [sys.maxsize] * (numV + 1) #initialise the shortest distance array with max values
+    shortestD = [sys.float_info.max] * (numV + 1) #initialise the shortest distance array with max values
     previousV = [-1] * (numV + 1) #previous vertices array
     visitedV = [False] * (numV + 1) #visited vertex array
 
@@ -30,7 +30,7 @@ def Dijkstra(g, dist, startVertexStr, endVertexStr):
             break
         for itr in range(len(g[currV[1]])): #go through all the adjacent vertices
             nextVertex = g[currV[1]][itr] #get the next vertex
-            currWeight = int(dist[currV[1]+","+nextVertex]) #distance from current vertex to next vertex
+            currWeight = float(dist[currV[1]+","+nextVertex]) #distance from current vertex to next vertex
             if currWeight > 0 and visitedV[int(nextVertex)] == False and \
                     shortestD[int(nextVertex)] > shortestD[int(currV[1])] + currWeight: #update path if the current vertex to the next vertex is the shorter one
                 shortestD[int(nextVertex)] = shortestD[int(currV[1])] + currWeight
