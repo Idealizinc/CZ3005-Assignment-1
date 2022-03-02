@@ -23,8 +23,8 @@ Dist = None  # Edge distance dictionary
 Coord = None # Node coordination dictionary
 
 # Settings
-DEBUG_MODE_ON = True
-DEBUG_ITERATION_MAX = 10
+DEBUG_MODE_ON = True    # Enable or disable debug mode
+DEBUG_ITERATION_MAX = 10 # Number of debug iterations to test for
 
 # Main runtime
 def main():
@@ -38,6 +38,7 @@ def main():
 
     return
 
+
 def jsonLoadFromFile(PATH):
     # Open JSON file
     f = open(PATH)
@@ -45,7 +46,7 @@ def jsonLoadFromFile(PATH):
     data = json.load(f)
     # For debugging, note the JSON files are HUGE, do not try and print everything
     if DEBUG_MODE_ON:
-        print("\n> Debug Output: " + PATH)
+        print("\n> Debug Preview Output: " + PATH)
         i = 0
         for attribute, value in data.items(): # Iterate through the json
             print(attribute, value)
