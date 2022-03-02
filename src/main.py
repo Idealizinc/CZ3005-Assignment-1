@@ -38,6 +38,11 @@ def main():
 
     return
 
+# Task 1: Any search with no energy constraint
+
+# Task 2: Any uninformed search algorithm
+
+# Task 3: A* search algorithm
 
 def jsonLoadFromFile(PATH):
     # Open JSON file
