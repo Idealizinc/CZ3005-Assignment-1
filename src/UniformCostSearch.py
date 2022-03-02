@@ -78,7 +78,6 @@ class UniformCostSearch:
         return self
 
     def setupExplorationResultString(self, EndNode):
-        print("\n> Results of Uniform Cost Search")
         result = ""
         current = self.ExploredSet[EndNode]
         while current != None:

@@ -33,10 +33,12 @@ DEBUG_ITERATION_MAX = 10 # Number of debug iterations to test for
 # Main runtime
 def main():
     # Load json into dict from file
+    print("\n< Loading JSON files")
     G = jsonLoadFromFile(JSON_PATH + FILE_G)
     Cost = jsonLoadFromFile(JSON_PATH + FILE_COST)
     Dist = jsonLoadFromFile(JSON_PATH + FILE_DIST)
     Coord = jsonLoadFromFile(JSON_PATH + FILE_COORD)
+    print()
 
     # Set up starting and ending nodes with energy Budget
     Start = "1"
@@ -53,16 +55,16 @@ def main():
         EnergyBudget = 11
 
     # Perform Search Methods Here
+    # Task 1: Any search with no energy constraint
     Dijkstra(G, Dist, Start,End)
-    # Task 2
+    # Task 2: Any uninformed search algorithm
+    print("\n> TASK 2: Results of Uniform Cost Search")
     UniformCostSearch().performSearch(Start, End, EnergyBudget, G, Cost, Dist).printResults()
+    # Task 3: A* search algorithm
+    
     return
 
-# Task 1: Any search with no energy constraint
 
-# Task 2: Any uninformed search algorithm
-
-# Task 3: A* search algorithm
 
 def jsonLoadFromFile(PATH):
     # Open JSON file
