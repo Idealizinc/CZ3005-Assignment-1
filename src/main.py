@@ -10,6 +10,7 @@ Finding a Shortest Path with An Energy Budget
 import json # To process json data from given files
 
 # Import of search algorithms
+from GreedyAlgorithm import Dijkstra
 from UniformCostSearch import UniformCostSearch
 
 # Constants
@@ -52,10 +53,9 @@ def main():
         EnergyBudget = 11
 
     # Perform Search Methods Here
-
+    Dijkstra(G, Dist, 1,50)
     # Task 2
     UniformCostSearch().performSearch(Start, End, EnergyBudget, G, Cost, Dist).printResults()
-
     return
 
 # Task 1: Any search with no energy constraint

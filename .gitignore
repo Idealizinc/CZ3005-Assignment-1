@@ -1,0 +1,5 @@
+
+*.iml
+.idea/inspectionProfiles/profiles_settings.xml
+*.xml
+src/__pycache__/GreedyAlgorithm.cpython-39.pyc
