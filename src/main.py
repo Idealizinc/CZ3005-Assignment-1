@@ -53,7 +53,7 @@ def main():
         EnergyBudget = 11
 
     # Perform Search Methods Here
-    Dijkstra(G, Dist, 1,50)
+    Dijkstra(G, Dist, Start,End)
     # Task 2
     UniformCostSearch().performSearch(Start, End, EnergyBudget, G, Cost, Dist).printResults()
     return
