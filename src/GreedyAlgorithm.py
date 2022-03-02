@@ -9,7 +9,9 @@ Task 1
 import sys
 from queue import PriorityQueue
 
-def Dijkstra(g, dist, startVertex, endVertex):
+def Dijkstra(g, dist, startVertexStr, endVertexStr):
+    startVertex = int(startVertexStr)
+    endVertex = int(endVertexStr)
 
     numV = len(g) #total number of Vertex
     shortestD = [sys.maxsize] * (numV + 1) #initialise the shortest distance array with max values
@@ -35,7 +37,7 @@ def Dijkstra(g, dist, startVertex, endVertex):
                 previousV[int(nextVertex)] = int(currV[1])
                 pqueue.put((shortestD[int(nextVertex)], nextVertex)) #insert next vertex to the queue so that we can explore it as well
 
-    resultStr = str(endVertex) #end vertex
+    resultStr = endVertexStr #end vertex
     currV = previousV[endVertex] #the connecting vertex
     while currV != -1 : #iterating thorught the array finding all the connecting vertex
         resultStr = str(currV) + "->" + resultStr
