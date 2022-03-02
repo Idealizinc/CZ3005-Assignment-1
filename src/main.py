@@ -8,6 +8,7 @@ Finding a Shortest Path with An Energy Budget
 '''
 # Import of necessary dependencies
 import json # To process json data from given files
+from GreedyAlgorithm import Dijkstra
 
 # Constants
 JSON_PATH = "../json/"
@@ -35,7 +36,7 @@ def main():
     Coord = jsonLoadFromFile(JSON_PATH + FILE_COORD)
 
     # Perform Search Methods Here
-
+    Dijkstra(G, Dist, 1,50)
     return
 
 # Task 1: Any search with no energy constraint
