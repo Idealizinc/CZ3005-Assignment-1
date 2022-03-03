@@ -12,6 +12,7 @@ import json # To process json data from given files
 # Import of search algorithms
 from GreedyAlgorithm import Dijkstra
 from UniformCostSearch import UniformCostSearch
+from AStarPathFinding import AStarPathFinding
 
 # Constants
 JSON_PATH = "../json/"
@@ -56,12 +57,15 @@ def main():
 
     # Perform Search Methods Here
     # Task 1: Any search with no energy constraint
-    Dijkstra(G, Dist, Start,End)
+    print("\n> TASK 1: Results of Dijkstra Greedy Algorithm")
+    Dijkstra().performSearch(Start,End,G, Dist)
     # Task 2: Any uninformed search algorithm
     print("\n> TASK 2: Results of Uniform Cost Search")
     UniformCostSearch().performSearch(Start, End, EnergyBudget, G, Cost, Dist).printResults()
     # Task 3: A* search algorithm
-    
+    print("\n> TASK 3: Results of A* Path Finding")
+    #print(Heuristic("1","1363",Coord))
+    AStarPathFinding().performSearch(Start, End, EnergyBudget, G, Cost, Dist, Coord).printResults()
     return
 
 
