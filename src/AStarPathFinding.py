@@ -51,6 +51,11 @@ class AStarPathFinding:
             # Check if the current node is the goal
             if current == EndNode:
                 break
+
+            #if current in DistCost and current in EnergyCost and
+
+
+
             # If yet to reach goal, explore all neighbours adjacent to current node
             neighbours = G[current]
             for next in neighbours:  # Explore all adjacent nodes
@@ -59,18 +64,17 @@ class AStarPathFinding:
                 energy = Cost[current + "," + next]
                 # Calculate total costs based on current node
                 newDist = DistCost[current] + dist
-                newFCost = newDist #+ (self.heuristic(current, next, Coord))
                 newEnergy = EnergyCost[current] + energy
 
                 # Consider whether to explore this node
                 # Either unexplored or the new costs to this node is better than the recorded ones
-                if (next not in Explored) or (newFCost < FCost[next]):
+                if (next not in Explored) or (newDist < DistCost[next]):
                     # Check energy cost, if too high, don't explore
                     if newEnergy <= EnergyCap:
+                        priority = newDist + (self.heuristic(current, next, Coord))
                         # Insert the next node into the frontier, with its distance as the exploration prioity
-                        Frontier.put((newFCost, next))
+                        Frontier.put((priority, next))
                         # Store its costs
-                        FCost[next] = newFCost
                         DistCost[next] = newDist
                         EnergyCost[next] = newEnergy
                         # Update the exploration status and set the current node to be the exploration parent node
