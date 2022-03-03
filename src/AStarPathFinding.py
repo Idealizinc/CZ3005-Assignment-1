@@ -64,9 +64,7 @@ class AStarPathFinding:
 
                 # Consider whether to explore this node
                 # Either unexplored or the new costs to this node is better than the recorded ones
-                if(next not in FCost):
-                    FCost[next] = sys.float_info.max
-                if (next not in Explored) and (newFCost < FCost[next]):
+                if (next not in Explored) or (newFCost < FCost[next]):
                     # Check energy cost, if too high, don't explore
                     if newEnergy <= EnergyCap:
                         # Insert the next node into the frontier, with its distance as the exploration prioity
