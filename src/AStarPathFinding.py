@@ -34,10 +34,10 @@ class AStarPathFinding:
         Frontier.put((0, 0, (StartNode, 0)))
 
         # Initiallize other required parameters
-        Explored = {}  # Dict of explored nodes {node : parentNode}
-        DistCost = {}  # Dict of dist cost from start to end node {node : cost}
-        minCost = {}  # Dict to store the lowest cost for the specific node
-        minDist = {}  # Dict to store the lowest dist for the specific node
+        Explored = {}  # Dict of explored nodes {node, energyCost : parentNode, parentEnergyCost}
+        DistCost = {}  # Dict of dist cost from start to end node {node, energyCost : cost}
+        minCost = {}  # Dict to store the lowest cost for the specific node {node : cost}
+        minDist = {}  # Dict to store the lowest dist for the specific node {node : distCost}
 
         # Initiallize values for starting node
         Explored[(StartNode, 0)] = None  # Start node no parent
@@ -83,25 +83,33 @@ class AStarPathFinding:
 
                     # Update the exploration status and set the current node to be the exploration parent node
                     Explored[(next, newEnergy)] = (current, currentCost)
+                    #print((next, newEnergy))
 
-        for itr in DistCost:
-            if itr[0] == '50':
-                print(DistCost[itr[0], minCost['50']])
-                print(minCost['50'])
         # Store calculated data into class
         self.ExploredSet = Explored
         self.TotalDistance = DistCost[EndNode,minCost[EndNode]]
         self.TotalEnergy = minCost[EndNode]
-        self.setupExplorationResultString(EndNode,minCost[EndNode])
+        self.setupExplorationResultString(EndNode,minCost[EndNode],Dist,Cost)
+        #self.pathCheck(EndNode,minCost[EndNode],Dist,Cost)
         return self
 
-    def setupExplorationResultString(self, EndNode, MinCost):
+    def setupExplorationResultString(self, EndNode, MinCost,Dist,Cost, Check = False):
+        tempD = 0
+        tempC = 0
         result = ""
         current = self.ExploredSet[EndNode, MinCost]
         while current != None:
             result = current[0] + "->" + result
+            if self.ExploredSet[current] != None and Check == True:
+                tempD += Dist[self.ExploredSet[current][0]+','+current[0]]
+                tempC += Cost[self.ExploredSet[current][0] + ',' + current[0]]
             current = self.ExploredSet[current]
         self.ShortestPath = result + EndNode
+        if Check == True:
+            tempD += Dist[self.ExploredSet[EndNode, MinCost][0]+','+EndNode]
+            tempC += Cost[self.ExploredSet[EndNode, MinCost][0] + ',' + EndNode]
+            print(tempD)
+            print(tempC)
         return self
 
     def printResults(self):
