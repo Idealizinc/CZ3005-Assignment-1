@@ -38,8 +38,6 @@ class Dijkstra:
         while not pqueue.empty():
             currV = pqueue.get() #get the first vertex of the priority queue (shorest distance)
             visitedV[int(currV[1])] = True #set the current vertex that we are going to explore as visited
-            if int(currV[1]) == endVertex: #ends the search since reached end node
-                break
             for itr in range(len(g[currV[1]])): #go through all the adjacent vertices
                 nextVertex = g[currV[1]][itr] #get the next vertex
                 currWeight = float(dist[currV[1]+","+nextVertex]) #distance from current vertex to next vertex
