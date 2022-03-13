@@ -13,7 +13,7 @@ import math
 
 
 # Find the shortest path between 2 locations within EnergyBudget
-class AStarPathFinding:
+class AStarSearchAlgorithm:
     ExploredSet = None
     TotalDistance = None
     TotalEnergy = None
